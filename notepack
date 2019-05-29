@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+
+# Initialize Notepack.
+#
+# Creates files and folders for the root directory of the app in the directory
+# where the app is placed.
+#
+init()
+{
+  mkdir ./tickets/
+}
+
+
+# New Notepack.
+#
+# Creates files and folders for a new notepack for a specific ticket.
+#
+new_notepack()
+{
+  touch ./tickets/"$ticket_name"/description.md
+  mkdir ./tickets/"$ticket_name"/testflows
+  mkdir ./tickets/"$ticket_name"/pictures
+  mkdir ./tickets/"$ticket_name"/scripts
+}
+
+
+# Initialize Notepack.
+#
+# To be used after new_notepack(), fills in the files and folders with a text
+# structure and instructions.
+#
+initialize_notepack()
+{
+}
+
+
+# Initialize Description.
+#
+# Fills in the description.md file with text structure and instructions.
+#
+init_description()
+{
+  echo "# $ticket_name
+  ---
+  ***Progress***
+  ***Notes***
+  ***Testflow mk0***" >> ./description.md
+}
+
+
+# New Testflow.
+#
+# Creates a testflow testfile with a new mk# and file structure.
+#
+new_testflow()
+{
+  # Check if there are already testflows.
+  existing_testflows=$(ls | wc -l)
+  if [ $existing_testflows == 0 ]; then
+    touch ./tickets/"$ticket_name"/testflows/testflow_mk1.md
+  else
+    # Check the latest testflow number.
+    last_testflow=$(ls | sort -r -n -t _ -k 2 | head -n 1)
+    last_mk=$(echo "$last_testflow" | sed 's/[^0-9]//g')
+
+    new_testflow="testflow_mk" + "$((last_mk+=1))" + ".md"
+    touch ./tickets/"$ticket_name"/testflows/"$new_testflow"
+  fi
+}
+
+
+# Initialize Testflow.
+#
+# Fill in the newest Testflow with text structure and instructions.
+#
+init_testflow()
+{
+}
+
+
+# Main Script.
+#
+# This is where you choose and perform actions.
+
+
+# Need to create a global variable to store the directory of a new ticket.
+# And should probably try to make the code more functional.

@@ -20,8 +20,18 @@ init_description()
   echo "# $ticket_name
   ---
   ***Progress***
+  _Explain the current progress of the ticket_
+
+
   ***Notes***
-  ***Testflow mk0***" >> ./tickets/"$ticket_name"/description.md
+  _Notes from reading the description and comments of the ticket_
+
+
+  ***Testflow mk0***
+  _Basic build of the testflows to be used for later rendition_
+
+
+  " >> ./tickets/"$ticket_name"/description.md
 }
 
 

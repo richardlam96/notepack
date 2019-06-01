@@ -57,9 +57,9 @@ ticket_name="$2"
 # Process arguments. Mostly create new notepack or testflow or init app.
 case "$action" in
   "--init") init_root ;;
-  * | "--help") show_help_menu ;;
   "--new-notepack") new_notepack ;;
   "--new-testflow") new_testflow ;;
+  * | "--help") show_help_menu ;;
 esac
 
 exit 0

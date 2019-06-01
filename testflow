@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# New Testflow.
+#
+# Creates a testflow testfile with a new mk# and file structure.
+#
+new_testflow()
+{
+  local last_mk=$(get_last_testflow)
+  new_testflow="testflow_mk" + "$((last_mk+=1))" + ".md"
+  touch ./tickets/"$ticket_name"/testflows/"$new_testflow"
+}
+
+
+# Initialize Testflow.
+#
+# Fill in the newest Testflow with text structure and instructions.
+#
+# init_testflow()
+
+
+# Last Testflow Number.
+#
+# Look through the testflows folder for the last mk#.
+#
+get_last_testflow()
+{
+  # Check if there are already testflows. If none, create first.
+  local existing_testflows=$(ls | wc -l)
+  local last_mk=1
+  if [ $existing_testflows != 0 ]; then
+    local last_testflow=$(ls | sort -r -n -t _ -k 2 | head -n 1)
+    last_mk=$(echo "$last_testflow" | sed 's/[^0-9]//g')
+  fi
+  echo $last_mk
+}
+

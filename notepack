@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
+source $(dirname $0)/description
+source $(dirname $0)/testflow
 
 # Initialize Notepack.
 #
 # Creates files and folders for the root directory of the app in the directory
 # where the app is placed.
 #
-init()
+init_root()
 {
   mkdir ./tickets/
+  mkdir ./features/
 }
 
 
@@ -17,71 +20,46 @@ init()
 #
 new_notepack()
 {
-  touch ./tickets/"$ticket_name"/description.md
+  echo -e "\e[96mCreating folders and initializing files"
   mkdir ./tickets/"$ticket_name"/testflows
   mkdir ./tickets/"$ticket_name"/pictures
   mkdir ./tickets/"$ticket_name"/scripts
+
+  new_description
+  new_testflow
 }
 
 
-# Initialize Notepack.
+# Show Help Menu.
 #
-# To be used after new_notepack(), fills in the files and folders with a text
-# structure and instructions.
+# Show usage menu. To be used any time an error occurs.
 #
-initialize_notepack()
-{
+show_help_menu() {
+  echo "
+    Usage: notepack [OPTION]... [TICKET_NAME]...
+    Notepack App. Create folder structures and files for writing testflow notes
+    and prototypes.
+
+    --new-notepack    Creates new Notepack package with given ticket name.
+    --new-testflow    Creates a new test for given ticket name.
+    --init            Creates root folders for the app.
+    --help            Shows this menu.
+  "
 }
 
 
-# Initialize Description.
-#
-# Fills in the description.md file with text structure and instructions.
-#
-init_description()
-{
-  echo "# $ticket_name
-  ---
-  ***Progress***
-  ***Notes***
-  ***Testflow mk0***" >> ./description.md
-}
+# Main Script #################################################################
 
+# Global Variables.
+action="$1"
+ticket_name="$2"
 
-# New Testflow.
-#
-# Creates a testflow testfile with a new mk# and file structure.
-#
-new_testflow()
-{
-  # Check if there are already testflows.
-  existing_testflows=$(ls | wc -l)
-  if [ $existing_testflows == 0 ]; then
-    touch ./tickets/"$ticket_name"/testflows/testflow_mk1.md
-  else
-    # Check the latest testflow number.
-    last_testflow=$(ls | sort -r -n -t _ -k 2 | head -n 1)
-    last_mk=$(echo "$last_testflow" | sed 's/[^0-9]//g')
+# Process arguments. Mostly create new notepack or testflow or init app.
+case "$action" in
+  "--init") init_root ;;
+  * | "--help") show_help_menu ;;
+  "--new-notepack") new_notepack ;;
+  "--new-testflow") new_testflow ;;
+esac
 
-    new_testflow="testflow_mk" + "$((last_mk+=1))" + ".md"
-    touch ./tickets/"$ticket_name"/testflows/"$new_testflow"
-  fi
-}
-
-
-# Initialize Testflow.
-#
-# Fill in the newest Testflow with text structure and instructions.
-#
-init_testflow()
-{
-}
-
-
-# Main Script.
-#
-# This is where you choose and perform actions.
-
-
-# Need to create a global variable to store the directory of a new ticket.
-# And should probably try to make the code more functional.
+exit 0

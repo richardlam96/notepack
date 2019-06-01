@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# New Description.
+#
+# Create a new Description markdown file.
+#
+new_description()
+{
+  touch ./tickets/"$ticket_name"/description.md
+  init_description
+}
+
+
+# Initialize Description.
+#
+# Fills in the description.md file with text structure and instructions.
+#
+init_description()
+{
+  echo "# $ticket_name
+  ---
+  ***Progress***
+  ***Notes***
+  ***Testflow mk0***" >> ./tickets/"$ticket_name"/description.md
+}
+
+

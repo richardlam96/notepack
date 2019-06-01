@@ -21,9 +21,9 @@ init_root()
 new_notepack()
 {
   echo -e "\e[96mCreating folders and initializing files"
-  mkdir ./tickets/"$ticket_name"/testflows
-  mkdir ./tickets/"$ticket_name"/pictures
-  mkdir ./tickets/"$ticket_name"/scripts
+  mkdir -p ./tickets/"$ticket_name"/testflows
+  mkdir -p ./tickets/"$ticket_name"/pictures
+  mkdir -p ./tickets/"$ticket_name"/scripts
 
   new_description
   new_testflow

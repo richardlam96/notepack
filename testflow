@@ -7,7 +7,7 @@
 new_testflow()
 {
   local last_mk=$(get_last_testflow)
-  new_testflow="testflow_mk" + "$((last_mk+=1))" + ".md"
+  new_testflow="testflow_mk$((last_mk+=1)).md"
 
   touch ./tickets/"$ticket_name"/testflows/"$new_testflow"
   init_testflow

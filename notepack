@@ -9,8 +9,8 @@ source $(dirname $0)/testflow
 #
 init_root()
 {
-  mkdir ./tickets/
-  mkdir ./features/
+  mkdir -p ./tickets/
+  mkdir -p ./features/
 }
 
 

@@ -6,7 +6,8 @@
 #
 new_description()
 {
-  touch ./tickets/"$ticket_name"/description.md
+  touch ./tickets/"$ticket_name"/description.md # necessary?
+  # nees to add ticket name to head
   cp ./config/description_config.md ./tickets/"$ticket_name"/description.md
 }
 

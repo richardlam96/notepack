@@ -7,7 +7,7 @@
 new_description()
 {
   touch ./tickets/"$ticket_name"/description.md
-  init_description
+  cp ./config/description_config.md ./tickets/"$ticket_name"/description.md
 }
 
 

@@ -11,6 +11,7 @@ init_root()
 {
   mkdir -p ./tickets/
   mkdir -p ./features/
+  mkdir -p ./config/
 }
 
 

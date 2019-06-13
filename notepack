@@ -19,12 +19,12 @@ init_root()
 #
 # Creates files and folders for a new notepack for a specific ticket.
 #
-new_notepack()
+new_ticket()
 {
   echo -e "\e[96mCreating folders and initializing files"
-  mkdir -p ./tickets/"$ticket_name"/testflows
-  mkdir -p ./tickets/"$ticket_name"/pictures
-  mkdir -p ./tickets/"$ticket_name"/scripts
+  mkdir -p "$CURRENT_TICKET_PATH"/testflows
+  mkdir -p "$CURRENT_TICKET_PATH"/pictures
+  mkdir -p "$CURRENT_TICKET_PATH"/scripts
 
   new_description
   new_testflow
@@ -41,24 +41,32 @@ show_help_menu() {
     Notepack App. Create folder structures and files for writing testflow notes
     and prototypes.
 
-    --new-notepack    Creates new Notepack package with given ticket name.
+    --new-ticket      Creates new Notepack package with given ticket name.
     --new-testflow    Creates a new test for given ticket name.
     --init            Creates root folders for the app.
     --help            Shows this menu.
   "
 }
 
-
-# Main Script #################################################################
+# Configuration ###############################################################
 
 # Global Variables.
 action="$1"
 ticket_name="$2"
 
+# Global Paths.
+CONFIG_PATH="./config"
+TICKET_PATH="./tickets"
+FEATURES_PATH="./features"
+CURRENT_TICKET_PATH="$TICKET_PATH/$ticket_name"
+CURRENT_TICKET_TESTFLOWS="$TICKET_PATH/$ticket_name/testflows"
+
+# Main Script #################################################################
+
 # Process arguments. Mostly create new notepack or testflow or init app.
 case "$action" in
   "--init") init_root ;;
-  "--new-notepack") new_notepack ;;
+  "--new-ticket") new_ticket ;;
   "--new-testflow") new_testflow ;;
   * | "--help") show_help_menu ;;
 esac

@@ -9,32 +9,7 @@ new_testflow()
   local last_mk=$(get_last_testflow)
   new_testflow="testflow_mk$((last_mk+=1)).md"
 
-  touch ./tickets/"$ticket_name"/testflows/"$new_testflow"
-  init_testflow
-}
-
-
-# Initialize Testflow.
-#
-# Fill in the newest Testflow with text structure and instructions.
-#
-init_testflow()
-{
-  echo "# $new_testflow
-  ---
-  ***Description***
-  _Description of the testflow including reason for the new rendition_
-
-
-  ***Testflow***
-  _The testflow itself, as detailed as you can_
-
-
-  ***Observations***
-  _Possible bugs, questions, and other notes for the next testflows_
-
-
-  " >> ./tickets/"$ticket_name"/testflows/"$new_testflow"
+  cp "$CONFIG_PATH"/testflow.md "$CURRENT_TICKET_TESTFLOWS"/"$new_testflow"
 }
 
 

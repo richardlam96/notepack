@@ -1,15 +1,19 @@
-# Testflow mk#
----
-***Description***
+-------------------------------------------------------------------------------
+# Description
 _Description of the testflow including reason for the new rendition_
+-------------------------------------------------------------------------------
 
 
-***Testflow***
+-------------------------------------------------------------------------------
+# Testflow
 _The testflow itself, as detailed as you can_
+-------------------------------------------------------------------------------
 
 
-***Observations***
-_Possible bugs, questions, and other notes for the next testflows_
+-------------------------------------------------------------------------------
+# Test Cases and Observations
+_Possible bugs, questions, and testflow adjustments from case analysis_
+-------------------------------------------------------------------------------
 
 
  

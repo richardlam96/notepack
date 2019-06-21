@@ -63,20 +63,27 @@ show_help_menu() {
   "
 }
 
+
 # Configuration ###############################################################
-
-# Global Variables.
-action="$1"
-ticket_name="$2"
-
 # Global Paths.
 CONFIG_PATH="./config"
 TICKET_PATH="./tickets"
 FEATURES_PATH="./features"
-CURRENT_TICKET_PATH="$TICKET_PATH/$ticket_name"
-CURRENT_TICKET_TESTFLOWS="$TICKET_PATH/$ticket_name/testflows"
+
 
 # Main Script #################################################################
+# Global Variables.
+action="$1"
+
+# Handle new ticket name vs directory and extract ticket name.
+if [[ -d "$2" ]]; then
+  ticket_name=$(echo "$2" | cut -d'/' -f2 )
+else
+  ticket_name="$2"
+fi
+
+CURRENT_TICKET_PATH="$TICKET_PATH/$ticket_name"
+CURRENT_TICKET_TESTFLOWS="$TICKET_PATH/$ticket_name/testflows"
 
 # Process arguments. Mostly create new notepack or testflow or init app.
 case "$action" in

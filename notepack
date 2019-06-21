@@ -31,6 +31,20 @@ new_ticket()
 }
 
 
+# Edit Ticket.
+#
+# Opens the description.md and the newest testflow_mk.md with vim
+#
+edit_ticket()
+{
+  local newest_testflow=$(ls $CURRENT_TICKET_PATH/testflows \
+                          | sort -r \
+                          | head -n 1)
+  exec vim -p $CURRENT_TICKET_PATH/description.md \
+              $CURRENT_TICKET_PATH/testflows/$newest_testflow
+}
+
+
 # Show Help Menu.
 #
 # Show usage menu. To be used any time an error occurs.
@@ -42,6 +56,7 @@ show_help_menu() {
     and prototypes.
 
     --new-ticket      Creates new Notepack package with given ticket name.
+    --edit-ticket     Opens the description and newest testflow for editing.
     --new-testflow    Creates a new test for given ticket name.
     --init            Creates root folders for the app.
     --help            Shows this menu.
@@ -67,6 +82,7 @@ CURRENT_TICKET_TESTFLOWS="$TICKET_PATH/$ticket_name/testflows"
 case "$action" in
   "--init") init_root ;;
   "--new-ticket") new_ticket ;;
+  "--edit-ticket") edit_ticket;;
   "--new-testflow") new_testflow ;;
   * | "--help") show_help_menu ;;
 esac

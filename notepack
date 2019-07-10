@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 source $(dirname $0)/description
 source $(dirname $0)/testflow
+source $(dirname $0)/feature
 
 # Initialize Notepack.
 #
@@ -19,7 +20,7 @@ init_root()
 #
 # Creates files and folders for a new notepack for a specific ticket.
 #
-new_ticket()
+new_notepack()
 {
   echo -e "\e[96mCreating folders and initializing files"
   mkdir -p "$CURRENT_TICKET_PATH"/testflows
@@ -35,7 +36,7 @@ new_ticket()
 #
 # Opens the description.md and the newest testflow_mk.md with vim
 #
-edit_ticket()
+edit_notepack()
 {
   local newest_testflow=$(ls $CURRENT_TICKET_PATH/testflows \
                           | sort -r \
@@ -88,8 +89,8 @@ CURRENT_TICKET_TESTFLOWS="$TICKET_PATH/$ticket_name/testflows"
 # Process arguments. Mostly create new notepack or testflow or init app.
 case "$action" in
   "--init") init_root ;;
-  "--new-ticket") new_ticket ;;
-  "--edit-ticket") edit_ticket;;
+  "--new-ticket") new_notepack ;;
+  "--edit-ticket") edit_notepack;;
   "--new-testflow") new_testflow ;;
   * | "--help") show_help_menu ;;
 esac

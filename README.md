@@ -6,5 +6,9 @@
     well
   * making that change would also make getting the ticket names easier
 2. Mode and possibly new config for adding to features/
+  * Figure out the structure of a "feature" (directories and files)
+  * Should just be like a list of tickets
+  * Make creating a new ticket more abstract for above bullet
+  * Temp solution now is ticket naming ("grouping") conventions
 3. Possibly more global variables for the current testflow
 4. A dashboard showing statuses of tickets and features

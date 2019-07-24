@@ -11,8 +11,8 @@ _Notes from reading the description and comments of the ticket_
 
 
 -------------------------------------------------------------------------------
-# Testflow mk0
-_aka "checklist", basic build of the testflows to be used for later rendition_
+# Checklist and Testcases
+_Initial list of points and cases to cover_
 -------------------------------------------------------------------------------
 
 

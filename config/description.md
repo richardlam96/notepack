@@ -5,8 +5,8 @@ _Explain the current progress of the ticket_
 
 
 -------------------------------------------------------------------------------
-# Initial Notes
-_Notes from reading the description and comments of the ticket_
+# Notes and questions for ET
+_Initial notes and questions for my ET performance (including asking Devs)_
 -------------------------------------------------------------------------------
 
 

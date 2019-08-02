@@ -26,9 +26,9 @@ new_notepack()
   mkdir -p "$CURRENT_TICKET_PATH"/testflows
   mkdir -p "$CURRENT_TICKET_PATH"/pictures
   mkdir -p "$CURRENT_TICKET_PATH"/scripts
-
   new_description
   new_testflow
+  echo -e "\e[96mDone!"
 }
 
 

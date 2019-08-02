@@ -11,7 +11,7 @@ _The testflow itself, as detailed as you can_
 
 
 -------------------------------------------------------------------------------
-# Test Cases and Observations
+# Issues and Observations
 _Possible bugs, questions, and testflow adjustments from case analysis_
 -------------------------------------------------------------------------------
 

@@ -29,6 +29,8 @@ new_notepack()
   new_description
   new_testflow
   echo -e "\e[96mDone!"
+
+  edit_notepack
 }
 
 

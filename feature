@@ -6,12 +6,12 @@ source $(dirname $0)/testflow
 
 # New Feature
 # This should basically create a new folder in the features directory.
-new_feature() {}
+# new_feature() {}
 
 # New Subfeature
 # Basically just create a testflow structure in a subfeature folder as if it
 # were a ticket.
-new_subfeature() {}
+# new_subfeature() {}
 
 
 

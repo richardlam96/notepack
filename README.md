@@ -1,4 +1,9 @@
 ### Features to implement
+0. Rename this things. Suggestions?
+  * ticketmaster
+  * tick (because it's short)
+1. When creating a new ticket, add the option to also open ("edit") it
+   immediately.
 2. Mode and possibly new config for adding to features/
   * Figure out the structure of a "feature" (directories and files)
   * Should just be like a list of tickets

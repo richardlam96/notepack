@@ -1,3 +1,12 @@
+-------------------------------------------------------------------------------
+# Notepack App
+-------------------------------------------------------------------------------
+_Description_ | Basically to organize documentation to make it easier to report
+what you've done, the TESTING STORY. This will include:
+* The status of the feature
+* How you performed the work
+* What made it more and less valuable; harder or easier; slower or faster
+
 ### Features to implement
 0. Rename this things. Suggestions?
   * ticketmaster

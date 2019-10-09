@@ -40,8 +40,13 @@ Description | _What does this feature entail?_
 
 Changes | _What changes do you need to make to existing code?_
   Instead of commands to create a new "ticket", maybe add another parameter for
-  a "mode", like "ticket" vs "feature".
+  a "mode", like "ticket" vs "feature", since they can really just be treated
+  the same except testflows generally would have another layer of abstraction.
   "--new" == "--new-notepack"
+
+  The main difference in the testflows is the config files, which should be
+  configured to the company's testflow documentation format, but also include
+  the Testing Story section, mostly for myself and for presentation.
   
   Examples:
   >> ./notepack --new ticket/new_ticket

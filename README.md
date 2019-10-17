@@ -8,7 +8,7 @@ what you've done, the TESTING STORY. This will include:
 * What made it more and less valuable; harder or easier; slower or faster
 
 ### Features to implement
-0. Rename this things. Suggestions?
+0. Rename this things. Suggestions? (not really important)
   * ticketmaster
   * tick (because it's short)
 1. When creating a new ticket, add the option to also open ("edit") it
@@ -20,6 +20,7 @@ what you've done, the TESTING STORY. This will include:
   * Temp solution now is ticket naming ("grouping") conventions
 3. Possibly more global variables for the current testflow
 4. A dashboard showing statuses of tickets and features
+5. Add some "advanced" vimsessions just for ease of use.
 
 ### Probably done
 1. Have a way to easily get ticket names for adding new testflows

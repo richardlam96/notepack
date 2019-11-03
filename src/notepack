@@ -51,6 +51,7 @@ edit_notepack()
 # Show Help Menu.
 #
 # Show usage menu. To be used any time an error occurs.
+# Should be abstracted to a documentation file later.
 #
 show_help_menu() {
   echo "
@@ -66,35 +67,3 @@ show_help_menu() {
   "
 }
 
-
-# Configuration ###############################################################
-# Global Paths.
-CONFIG_PATH="./config"
-TICKET_PATH="./tickets"
-FEATURES_PATH="./features"
-
-
-# Main Script #################################################################
-# Global Variables.
-action="$1"
-
-# Handle new ticket name vs directory and extract ticket name.
-if [[ -d "$2" ]]; then
-  ticket_name=$(echo "$2" | cut -d'/' -f2 )
-else
-  ticket_name="$2"
-fi
-
-CURRENT_TICKET_PATH="$TICKET_PATH/$ticket_name"
-CURRENT_TICKET_TESTFLOWS="$TICKET_PATH/$ticket_name/testflows"
-
-# Process arguments. Mostly create new notepack or testflow or init app.
-case "$action" in
-  "--init") init_root ;;
-  "--new-ticket") new_notepack ;;
-  "--edit-ticket") edit_notepack;;
-  "--new-testflow") new_testflow ;;
-  * | "--help") show_help_menu ;;
-esac
-
-exit 0

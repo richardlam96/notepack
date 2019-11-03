@@ -7,6 +7,11 @@ what you've done, the TESTING STORY. This will include:
 * How you performed the work
 * What made it more and less valuable; harder or easier; slower or faster
 
+### Tasks for restructure
+0. File Structure and Documentation
+1. Pure functions (Functional Programming)
+2. Automated Tests
+
 ### Features to implement
 0. Rename this things. Suggestions?
   * ticketmaster

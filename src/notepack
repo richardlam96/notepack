@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
-source $(dirname $0)/description
-source $(dirname $0)/testflow
-source $(dirname $0)/feature
 
-# Initialize Notepack.
+# Initialize App
 #
 # Creates files and folders for the root directory of the app in the directory
 # where the app is placed.
@@ -19,17 +16,22 @@ init_root()
 # New Notepack.
 #
 # Creates files and folders for a new notepack for a specific ticket.
+# @param  $1  ticket_path
 #
 new_notepack()
 {
+  # Create initial directories for the new notepack.
   echo -e "\e[96mCreating folders and initializing files"
-  mkdir -p "$CURRENT_TICKET_PATH"/testflows
-  mkdir -p "$CURRENT_TICKET_PATH"/pictures
-  mkdir -p "$CURRENT_TICKET_PATH"/scripts
+  mkdir -p "$1"/testflows
+  mkdir -p "$1"/pictures
+  mkdir -p "$1"/scripts
+
+  # Add default documents from the config file to the new notepack.
   new_description
   new_testflow
-  echo -e "\e[96mDone!"
 
+  # Conclude operations and open the notepack in vim.
+  echo -e "\e[96mDone!"
   edit_notepack
 }
 
@@ -37,33 +39,15 @@ new_notepack()
 # Edit Ticket.
 #
 # Opens the description.md and the newest testflow_mk.md with vim
+# @param  $1  ticket_path
 #
 edit_notepack()
 {
-  local newest_testflow=$(ls $CURRENT_TICKET_PATH/testflows \
+  local newest_testflow=$(ls $1/testflows \
                           | sort -r \
                           | head -n 1)
-  exec vim -p $CURRENT_TICKET_PATH/description.md \
-              $CURRENT_TICKET_PATH/testflows/$newest_testflow
+  exec vim -p $1/description.md \
+              $1/testflows/$newest_testflow
 }
 
-
-# Show Help Menu.
-#
-# Show usage menu. To be used any time an error occurs.
-# Should be abstracted to a documentation file later.
-#
-show_help_menu() {
-  echo "
-    Usage: notepack [OPTION]... [TICKET_NAME]...
-    Notepack App. Create folder structures and files for writing testflow notes
-    and prototypes.
-
-    --new-ticket      Creates new Notepack package with given ticket name.
-    --edit-ticket     Opens the description and newest testflow for editing.
-    --new-testflow    Creates a new test for given ticket name.
-    --init            Creates root folders for the app.
-    --help            Shows this menu.
-  "
-}
 

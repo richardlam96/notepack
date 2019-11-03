@@ -8,9 +8,11 @@ what you've done, the TESTING STORY. This will include:
 * What made it more and less valuable; harder or easier; slower or faster
 
 ### Tasks for restructure
-0. File Structure and Documentation
-1. Pure functions (Functional Programming)
-2. Automated Tests
+0. α File Structure and Documentation
+1. Δ Pure functions (Functional Programming)
+2. Δ Exception Handling
+3. Δ Automated Tests
+4. Why are .swp files sticking around?
 
 ### Features to implement
 0. Rename this things. Suggestions?

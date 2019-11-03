@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+# Notepack
+# Entry point of the notepack app. This file will also source all the other
+# components required for the app.
+#
+source $(dirname $0)/src/ticket
+source $(dirname $0)/src/description
+source $(dirname $0)/src/testflow
+source $(dirname $0)/src/feature
+
+# Initialize App
+#
+# Creates files and folders for the root directory of the app in the directory
+# where the app is placed.
+#
+init_root()
+{
+  mkdir -p ./tickets/
+  mkdir -p ./features/
+  mkdir -p ./config/
+}
+
+notepack()
+{
+  # The CONFIG_PATH is where default document formats are stored.
+  # The TICKET_PATH is where tickets, or groups of documents, are stored.
+  # The FEATURES_PATH is where features, or groups of tickets, are stored.
+  local config_path="$(dirname 0)/config"
+  local ticket_path="$(dirname 0)/tickets"
+  local features_path="$(dirname 0)/features"   # Work in progress.
+
+
+  # Get the arguments passed to the command and perform actions on the given
+  # ticket name accordingly.
+  local action="$1"
+  local ticket_name="$2"
+
+  # If the given ticket name is a directory, extract just the name.
+  if [[ -d "$2" ]]; then
+    ticket_name=$(echo "$2" | cut -d'/' -f2 )
+  fi
+
+  # Build paths to the new or existing ticket name.
+  local current_ticket_path="$ticket_path/$ticket_name"
+  local current_ticket_testflows="$ticket_path/$ticket_name/testflows"
+
+  # Process arguments. Mostly create new notepack or testflow or init app.
+  case "$action" in
+    "--init")         init_root ;;
+    "--new-ticket")   new_notepack $current_ticket_path ;;
+    "--edit-ticket")  edit_notepack;;
+    "--new-testflow") new_testflow ;;
+    * | "--help")     cat $(dirname $0)/docs/help.txt ;;
+  esac
+
+  exit 0
+}
+
+# Start Notepack App.
+notepack

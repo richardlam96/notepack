@@ -1,16 +1,6 @@
 #!/usr/bin/env bash
 
-# Initialize App
-#
-# Creates files and folders for the root directory of the app in the directory
-# where the app is placed.
-#
-init_root()
-{
-  mkdir -p ./tickets/
-  mkdir -p ./features/
-  mkdir -p ./config/
-}
+
 
 
 # New Notepack.
@@ -20,11 +10,13 @@ init_root()
 #
 new_notepack()
 {
+  local ticket_path="$1"
+
   # Create initial directories for the new notepack.
   echo -e "\e[96mCreating folders and initializing files"
-  mkdir -p "$1"/testflows
-  mkdir -p "$1"/pictures
-  mkdir -p "$1"/scripts
+  mkdir -p "$ticket_path"/testflows
+  mkdir -p "$ticket_path"/pictures
+  mkdir -p "$ticket_path"/scripts
 
   # Add default documents from the config file to the new notepack.
   new_description

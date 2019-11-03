@@ -9,7 +9,7 @@ what you've done, the TESTING STORY. This will include:
 
 ### Tasks for restructure
 0. α File Structure and Documentation
-1. Δ Pure functions (Functional Programming)
+1. α Pure functions (Functional Programming)
 2. Δ Exception Handling
 3. Δ Automated Tests
 4. Why are .swp files sticking around?

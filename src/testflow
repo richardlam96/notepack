@@ -3,24 +3,33 @@
 # New Testflow.
 #
 # Creates a testflow testfile with a new mk# and file structure.
+# @param  $1  config_path  Path where default documentation is placed.
+# @param  $2  ticket_path  Path where ticket is.
 #
 new_testflow()
 {
-  local last_mk=$(get_last_testflow)
-  new_testflow="testflow_mk$((last_mk+=1)).md"
+  local config_path="$1"
+  local ticket_path="$2"
 
-  cp "$CONFIG_PATH"/testflow.md "$CURRENT_TICKET_TESTFLOWS"/"$new_testflow"
+  local current_ticket_testflows="$ticket_path/testflows"
+  local last_mk=$(get_last_testflow "$current_ticket_testflows")
+  local new_testflow="testflow_mk$((last_mk+=1)).md"
+
+  cp "$config_path"/testflow.md "$current_ticket_testflows"/"$new_testflow"
 }
 
 
 # Last Testflow Number.
 #
 # Look through the testflows folder for the last mk#.
+# @param  $1  current_ticket_testflows  Path of ticket's testflows.
 #
 get_last_testflow()
 {
+  local current_ticket_testflows="$1"
+
   # Check if there are already testflows. If none, create first.
-  local existing_testflows=$(ls $CURRENT_TICKET_TESTFLOWS | wc -l)
+  local existing_testflows=$(ls $current_ticket_testflows | wc -l)
   # local last_mk=$(ls $CURRENT_TICKET_TESTFLOWS \
   #                 | sort -r -n -t _ -k 2 \
   #                 | head -n 1 \

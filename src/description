@@ -3,11 +3,15 @@
 # New Description.
 #
 # Create a new Description markdown file.
+# @param  $1  config_path  Path where default documentation is placed.
+# @param  $2  ticket_path  Path where ticket is.
 #
 new_description()
 {
-  # touch "$CURRENT_TICKET_PATH"/description.md # necessary?
+  local config_path="$1"
+  local ticket_path="$2"
+
   # needs to add ticket name to head
-  cp "$CONFIG_PATH"/description.md "$CURRENT_TICKET_PATH"/description.md
+  cp "$config_path"/description.md "$ticket_path"/description.md
 }
 

@@ -6,11 +6,13 @@
 # New Ticket
 #
 # Creates files and folders for a new notepack for a specific ticket.
-# @param  $1  ticket_path
+# @param  $1  config_path
+# @param  $2  ticket_path
 #
 new_ticket()
 {
-  local ticket_path="$1"
+  local config_path="$1"
+  local ticket_path="$2"
 
   # Create initial directories for the new notepack.
   echo -e "\e[96mCreating folders and initializing files"
@@ -19,12 +21,12 @@ new_ticket()
   mkdir -p "$ticket_path"/scripts
 
   # Add default documents from the config file to the new notepack.
-  new_description
-  new_testflow
+  new_description $config_path $ticket_path
+  new_testflow $config_path $ticket_path
 
   # Conclude operations and open the notepack in vim.
   echo -e "\e[96mDone!"
-  edit_ticket
+  edit_ticket $ticket_path
 }
 
 

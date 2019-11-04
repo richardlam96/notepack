@@ -27,7 +27,7 @@ notepack()
   # The TICKET_PATH is where tickets, or groups of documents, are stored.
   # The FEATURES_PATH is where features, or groups of tickets, are stored.
   local config_path="$(dirname 0)/config"
-  local ticket_path="$(dirname 0)/tickets"
+  local tickets_path="$(dirname 0)/tickets"
   local features_path="$(dirname 0)/features"   # Work in progress.
 
 
@@ -42,15 +42,14 @@ notepack()
   fi
 
   # Build paths to the new or existing ticket name.
-  local current_ticket_path="$ticket_path/$ticket_name"
-  local current_ticket_testflows="$ticket_path/$ticket_name/testflows"
+  local current_ticket_path="$tickets_path/$ticket_name"
 
   # Process arguments. Mostly create new notepack or testflow or init app.
   case "$action" in
     "--init" | "-i")  init_root ;;
-    "--new"  | "-n")  new_ticket $current_ticket_path ;;
+    "--new"  | "-n")  new_ticket $config_path $current_ticket_path ;;
     "--edit" | "-e")  edit_ticket $current_ticket_path ;;
-    "--new-testflow") new_testflow ;;
+    "--new-testflow") new_testflow $config_path $current_ticket_path;;
     * | "--help")     cat $(dirname $0)/docs/help.txt ;;
   esac
 

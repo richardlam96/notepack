@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+
+
+
+# New Notepack.
+#
+# Creates files and folders for a new notepack for a specific ticket.
+# @param  $1  ticket_path
+#
+new_notepack()
+{
+  local ticket_path="$1"
+
+  # Create initial directories for the new notepack.
+  echo -e "\e[96mCreating folders and initializing files"
+  mkdir -p "$ticket_path"/testflows
+  mkdir -p "$ticket_path"/pictures
+  mkdir -p "$ticket_path"/scripts
+
+  # Add default documents from the config file to the new notepack.
+  new_description
+  new_testflow
+
+  # Conclude operations and open the notepack in vim.
+  echo -e "\e[96mDone!"
+  edit_notepack
+}
+
+
+# Edit Ticket.
+#
+# Opens the description.md and the newest testflow_mk.md with vim
+# @param  $1  ticket_path
+#
+edit_notepack()
+{
+  local newest_testflow=$(ls $1/testflows \
+                          | sort -r \
+                          | head -n 1)
+  exec vim -p $1/description.md \
+              $1/testflows/$newest_testflow
+}
+
+

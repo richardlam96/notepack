@@ -24,6 +24,8 @@ what you've done, the TESTING STORY. This will include:
   * Should just be like a list of tickets
   * Make creating a new ticket more abstract for above bullet
   * Temp solution now is ticket naming ("grouping") conventions
+2. More status lines when performing actions
+2. Full view of a ticket. View description, all testflows, etc in separate tabs
 3. Possibly more global variables for the current testflow
 4. A dashboard showing statuses of tickets and features
 5. Add some "advanced" vimsessions just for ease of use.

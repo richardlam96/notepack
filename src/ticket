@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-
-
-
 # New Ticket
 #
 # Creates files and folders for a new notepack for a specific ticket.

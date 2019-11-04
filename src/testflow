@@ -30,10 +30,6 @@ get_last_testflow()
 
   # Check if there are already testflows. If none, create first.
   local existing_testflows=$(ls $current_ticket_testflows | wc -l)
-  # local last_mk=$(ls $CURRENT_TICKET_TESTFLOWS \
-  #                 | sort -r -n -t _ -k 2 \
-  #                 | head -n 1 \
-  #                 | sed 's/[^0-9]//g')
   echo $existing_testflows
 }
 

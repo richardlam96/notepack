@@ -50,7 +50,7 @@ notepack()
     "--new"  | "-n")  new_ticket $config_path $current_ticket_path ;;
     "--edit" | "-e")  edit_ticket $current_ticket_path ;;
     "--new-testflow") new_testflow $config_path $current_ticket_path;;
-    * | "--help")     cat $(dirname $0)/docs/help.txt ;;
+    * | "--help")     cat "$(dirname $0)/docs/help.txt" ;;
   esac
 
   exit 0

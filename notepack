@@ -47,9 +47,9 @@ notepack()
 
   # Process arguments. Mostly create new notepack or testflow or init app.
   case "$action" in
-    "--init")         init_root ;;
-    "--new-ticket")   new_notepack $current_ticket_path ;;
-    "--edit-ticket")  edit_notepack;;
+    "--init" | "-i")  init_root ;;
+    "--new"  | "-n")  new_notepack $current_ticket_path ;;
+    "--edit" | "-e")  edit_notepack;;
     "--new-testflow") new_testflow ;;
     * | "--help")     cat $(dirname $0)/docs/help.txt ;;
   esac

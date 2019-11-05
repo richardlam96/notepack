@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
+# Ticket
+# Functions to manipulate directories for tickets, including creating the
+# ticket's root directories and default documentation templates.
+#
 
 # New Ticket
-#
 # Creates files and folders for a new notepack for a specific ticket.
 # @param  $1  config_path
 # @param  $2  ticket_path
@@ -27,9 +30,8 @@ new_ticket()
 }
 
 
-# Edit Ticket.
-#
-# Opens the description.md and the newest testflow_mk.md with vim
+# Edit Ticket
+# Opens the description.md and the newest testflow_mk.md with vim.
 # @param  $1  ticket_path
 #
 edit_ticket()

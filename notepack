@@ -3,6 +3,10 @@
 # Notepack
 # Entry point of the notepack app. This file will also source all the other
 # components required for the app.
+# @source ticket
+# @source description
+# @source testflow
+# @source feature
 #
 source $(dirname $0)/src/ticket
 source $(dirname $0)/src/description

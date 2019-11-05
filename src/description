@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 # New Description.
-#
-# Create a new Description markdown file.
+# Copy the default documenation template to the current ticket's folder.
 # @param  $1  config_path  Path where default documentation is placed.
 # @param  $2  ticket_path  Path where ticket is.
 #

@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # New Testflow.
-#
 # Creates a testflow testfile with a new mk# and file structure.
 # @param  $1  config_path  Path where default documentation is placed.
 # @param  $2  ticket_path  Path where ticket is.
@@ -20,7 +19,6 @@ new_testflow()
 
 
 # Last Testflow Number.
-#
 # Look through the testflows folder for the last mk#.
 # @param  $1  current_ticket_testflows  Path of ticket's testflows.
 #

@@ -15,6 +15,7 @@ what you've done, the TESTING STORY. This will include:
 4. Why are .swp files sticking around?
 
 ### Features to implement
+0. Each ticket should have a "todo" to list progress.
 0. Rename this things. Suggestions? (not really important)
   * ticketmaster
   * tick (because it's short)

@@ -13,9 +13,12 @@ what you've done, the TESTING STORY. This will include:
 2. Δ Exception Handling
 3. Δ Automated Tests
 4. Why are .swp files sticking around?
+5. Consider better notepack formats, including table of contents type thing for
+   testflows mks?
+   And how would this differ from how I use and should use/define "testcases"?
+   Consider the development of feature tickets.
 
 ### Features to implement
-0. Each ticket should have a "todo" to list progress.
 0. Rename this things. Suggestions? (not really important)
   * ticketmaster
   * tick (because it's short)

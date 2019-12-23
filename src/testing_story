@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# New Testing Story
+# Copy the default format for the Testing Story from the config path.
+# @param  $1  config_path  Path where default documentation is placed.
+# @param  $2  ticket_path  Path where ticket is.
+#
+new_testing_story()
+{
+  local config_path="$1"
+  local ticket_path="$2"
+
+  cp "$config_path"/testing_story.md "$ticket_path"/testing_story.md
+}

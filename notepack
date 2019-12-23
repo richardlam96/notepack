@@ -11,6 +11,7 @@
 source $(dirname $0)/src/ticket
 source $(dirname $0)/src/description
 source $(dirname $0)/src/testflow
+source $(dirname $0)/src/testing_story
 source $(dirname $0)/src/feature
 
 # Initialize App

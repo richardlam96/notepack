@@ -13,6 +13,10 @@ what you've done, the TESTING STORY. This will include:
 2. Δ Exception Handling
 3. Δ Automated Tests
 4. Why are .swp files sticking around?
+5. Consider better notepack formats, including table of contents type thing for
+   testflows mks?
+   And how would this differ from how I use and should use/define "testcases"?
+   Consider the development of feature tickets.
 
 ### Features to implement
 0. Rename this things. Suggestions? (not really important)
@@ -27,6 +31,7 @@ what you've done, the TESTING STORY. This will include:
 2. More status lines when performing actions (logging)
 2. Full view of a ticket. View description, all testflows, etc in separate tabs
 2. Short view of a ticket. Ticket name, status, number of testflows, etc.
+2. Summary view of tickets, including testflows and their purpose
 3. Possibly more global variables for the current testflow
 4. A dashboard showing statuses of tickets and features
 5. Add some "advanced" vimsessions just for ease of use.

@@ -14,5 +14,15 @@ Whitebox
 _Initial list of points and cases to cover_
 -------------------------------------------------------------------------------
 
+Setup
+-----
 
+Regression
+----------
+
+Acceptance
+----------
+
+Exploratory
+-----------
 

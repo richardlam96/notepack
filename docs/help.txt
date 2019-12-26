@@ -2,10 +2,10 @@ Usage: notepack [OPTION]... [TICKET_NAME]...
 Notepack App. Create folder structures and files for writing testflow notes
 and prototypes.
 
-  --init            Creates root folders for the app.
-  --new             Creates new Notepack package with given ticket name.
-  --edit            Opens the description and newest testflow for editing.
-  --new-testflow    Creates a new test for given ticket name.
-  --new-feature     Creates a Notepack package in the features folder.
-  --help            Shows this menu.
+  --init          -i   Creates root folders for the app.
+  --new           -n   Creates new Notepack package with given ticket name.
+  --edit          -e   Opens the description and newest testflow for editing.
+  --new-testflow       Creates a new test for given ticket name.
+  --new-feature        Creates a Notepack package in the features folder.
+  --help          -h   Shows this menu.
 

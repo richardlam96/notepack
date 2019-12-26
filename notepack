@@ -48,7 +48,7 @@ notepack()
 
   # Build paths to the new or existing ticket name.
   local current_ticket_path="$tickets_path/$ticket_name"
-  local current_features_path="$features_path/$ticket_name"
+  local current_feature_path="$features_path/$ticket_name"
 
   # Process arguments. Mostly create new notepack or testflow or init app.
   case "$action" in
@@ -56,7 +56,8 @@ notepack()
     "--new"  | "-n")  new_ticket $config_path $current_ticket_path ;;
     "--edit" | "-e")  edit_ticket $current_ticket_path ;;
     "--new-testflow") new_testflow $config_path $current_ticket_path;;
-    "--new-feature")  new_ticket $config_path $current_features_path ;;
+    "--new-feature")  new_ticket $config_path $current_feature_path ;;
+    "--edit-feature") edit_ticket $current_feature_path ;;
     * | "--help")     cat "$(dirname $0)/docs/help.txt" ;;
   esac
 

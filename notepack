@@ -22,7 +22,6 @@ source $(dirname $0)/src/feature
 init_root()
 {
   mkdir -p ./tickets/
-  mkdir -p ./features/
   mkdir -p ./config/
 }
 
@@ -31,35 +30,68 @@ notepack()
   # The CONFIG_PATH is where default document formats are stored.
   # The TICKET_PATH is where tickets, or groups of documents, are stored.
   # The FEATURES_PATH is where features, or groups of tickets, are stored.
+  local docs_path="$(dirname 0)/docs"
   local config_path="$(dirname 0)/config"
   local tickets_path="$(dirname 0)/tickets"
-  local features_path="$(dirname 0)/features"   # Work in progress.
+
+  # Get the desired ticket path, and assume you want to create a new ticket.
+  local current_ticket_path="$1"
 
 
-  # Get the arguments passed to the command and perform actions on the given
-  # ticket name accordingly.
-  local action="$1"
-  local ticket_name="$2"
-
-  # If the given ticket name is a directory, extract just the name.
-  if [[ -d "$2" ]]; then
-    ticket_name=$(echo "$2" | cut -d'/' -f2 )
+  if [[ -z "$current_ticket_path" ]]; then
+    echo "Enter something in the format of ticket_path/category/name"
+    exit 0
   fi
 
-  # Build paths to the new or existing ticket name.
-  local current_ticket_path="$tickets_path/$ticket_name"
-  local current_feature_path="$features_path/$ticket_name"
+  if [[ "$current_ticket_path" == "init" ]]; then
+    init_root
+    exit 0
+  fi
 
-  # Process arguments. Mostly create new notepack or testflow or init app.
-  case "$action" in
-    "--init" | "-i")  init_root ;;
-    "--new"  | "-n")  new_ticket $config_path $current_ticket_path ;;
-    "--edit" | "-e")  edit_ticket $current_ticket_path ;;
-    "--new-testflow") new_testflow $config_path $current_ticket_path;;
-    "--new-feature")  new_ticket $config_path $current_feature_path ;;
-    "--edit-feature") edit_ticket $current_feature_path ;;
-    * | "--help")     cat "$(dirname $0)/docs/help.txt" ;;
-  esac
+  echo "${current_ticket_path}"
+  # Get the last and second to last parts of the directory for ticket name and
+  # category, respectively.
+  local ticket_category=$(echo "$current_ticket_path" | rev | cut -d'/' -f2 | rev)
+  local ticket_name=$(echo "$current_ticket_path" | rev | cut -d'/' -f1 | rev)
+
+  echo "${tickets_path}"
+  echo "${ticket_category}"
+  echo "${ticket_name}"
+
+  # While the ticket category doesn't exist, list the possible options or ask
+  # to create a new category.
+  while [[ ! -d "$tickets_path/$ticket_category" ]]; do
+    # Should list categories here and give option to choose another.
+    echo "The category '${ticket_category}' does not exist. "
+    echo "Choose another or create new [name/'new']: "
+    find . -maxdepth 1 -type d
+    read -r new_category_name
+    if [[ "$new_category_name" == "new" ]]; then
+      break
+    fi
+    ticket_category="$new_category_name"
+  done
+
+  # Build the new ticket path.
+  local current_ticket_path="$tickets_path/$ticket_category/$ticket_name"
+
+  # If the ticket already exists in that category, ask to just open.
+  if [[ -e "$current_ticket_path" ]]; then
+    echo "The ticket already exists in the category '${ticket_category}'"
+    echo "Open it to edit? [Y/n]: "
+    read -r user_input
+    if [[ "$user_input" == "n" ]]; then
+      exit 0
+    fi
+
+    echo "Create a new testflow for ${ticket_name}? [y/N]"
+    if [[ "$user_input" == "y" ]]; then
+      new_testflow $config_path $current_ticket_path
+    fi
+    edit_ticket $current_ticket_path
+  else
+    new_ticket $config_path $current_ticket_path
+  fi
 
   exit 0
 }

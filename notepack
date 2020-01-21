@@ -34,29 +34,24 @@ notepack()
   local config_path="$(dirname 0)/config"
   local tickets_path="$(dirname 0)/tickets"
 
-  # Get the desired ticket path, and assume you want to create a new ticket.
-  local current_ticket_path="$1"
-
-
-  if [[ -z "$current_ticket_path" ]]; then
-    echo "Enter something in the format of ticket_path/category/name"
+  # If there are no arguments, help flag is used, print the help text.
+  if [[ $# -eq 0 ]] || [[ "$1" == "--help" ]]; then
+    cat "$docs_path/help.txt"
     exit 0
   fi
+
+  # Get the desired ticket path, and assume you want to create a new ticket.
+  local current_ticket_path="$1"
 
   if [[ "$current_ticket_path" == "init" ]]; then
     init_root
     exit 0
   fi
 
-  echo "${current_ticket_path}"
   # Get the last and second to last parts of the directory for ticket name and
   # category, respectively.
   local ticket_category=$(echo "$current_ticket_path" | rev | cut -d'/' -f2 | rev)
   local ticket_name=$(echo "$current_ticket_path" | rev | cut -d'/' -f1 | rev)
-
-  echo "${tickets_path}"
-  echo "${ticket_category}"
-  echo "${ticket_name}"
 
   # While the ticket category doesn't exist, list the possible options or ask
   # to create a new category.

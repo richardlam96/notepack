@@ -53,6 +53,13 @@ notepack()
   local ticket_category=$(echo "$current_ticket_path" | cut -d'/' -f2)
   local ticket_name=$(echo "$current_ticket_path" | rev | cut -d'/' -f2 | rev)
 
+  # If either of those are empty, likely because of last '/', exit.
+  if [[ -z "$ticket_category" || -z "$ticket_name" ]]; then
+    echo "Invalid input, try again."
+    cat "$docs_path/help.txt"
+    exit 0
+  fi
+
   # While the ticket category doesn't exist, list the possible options or ask
   # to create a new category.
   while [[ ! -d "$tickets_path/$ticket_category" ]]; do

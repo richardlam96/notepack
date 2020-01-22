@@ -50,8 +50,8 @@ notepack()
 
   # Get the last and second to last parts of the directory for ticket name and
   # category, respectively.
-  local ticket_category=$(echo "$current_ticket_path" | rev | cut -d'/' -f2 | rev)
-  local ticket_name=$(echo "$current_ticket_path" | rev | cut -d'/' -f1 | rev)
+  local ticket_category=$(echo "$current_ticket_path" | cut -d'/' -f2)
+  local ticket_name=$(echo "$current_ticket_path" | rev | cut -d'/' -f2 | rev)
 
   # While the ticket category doesn't exist, list the possible options or ask
   # to create a new category.
@@ -68,11 +68,12 @@ notepack()
   done
 
   # Build the new ticket path.
-  local current_ticket_path="$tickets_path/$ticket_category/$ticket_name"
+  local current_ticket_path="${tickets_path}/${ticket_category}/${ticket_name}"
 
   # If the ticket already exists in that category, ask to just open.
   if [[ -e "$current_ticket_path" ]]; then
     echo "The ticket already exists in the category '${ticket_category}'"
+    echo "It exists in '${current_ticket_path}'"
     echo "Open it to edit? [Y/n]: "
     read -r user_input
     if [[ "$user_input" == "n" ]]; then

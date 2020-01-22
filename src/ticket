@@ -4,6 +4,7 @@
 # ticket's root directories and default documentation templates.
 #
 
+
 # New Ticket
 # Creates files and folders for a new notepack for a specific ticket.
 # @param  $1  config_path

@@ -12,3 +12,13 @@ new_testing_story()
 
   cp "$config_path"/testing_story.md "$ticket_path"/testing_story.md
 }
+
+new_test_summary()
+{
+  local config_path="$1"
+  local ticket_path="$2"
+
+  cp "$config_path"/test_summary.md "$ticket_path"/test_summary.md
+}
+
+

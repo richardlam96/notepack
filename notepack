@@ -66,7 +66,7 @@ notepack()
     # Should list categories here and give option to choose another.
     echo "The category '${ticket_category}' does not exist. "
     echo "Choose another or create new [name/'new']: "
-    find . -maxdepth 1 -type d
+    find "$(dirname 0)/tickets" -maxdepth 1 -type d | less
     read -r new_category_name
     if [[ "$new_category_name" == "new" ]]; then
       break

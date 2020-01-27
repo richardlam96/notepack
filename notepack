@@ -51,7 +51,7 @@ notepack()
   # Get the last and second to last parts of the directory for ticket name and
   # category, respectively.
   local ticket_category=$(echo "$current_ticket_path" | cut -d'/' -f2)
-  local ticket_name=$(echo "$current_ticket_path" | rev | cut -d'/' -f2 | rev)
+  local ticket_name=$(echo "$current_ticket_path" | rev | cut -d'/' -f1 | rev)
 
   # If either of those are empty, likely because of last '/', exit.
   if [[ -z "$ticket_category" || -z "$ticket_name" ]]; then
@@ -74,6 +74,17 @@ notepack()
       break
     fi
     ticket_category="$new_category_name"
+  done
+
+  # While the ticket name doesn't exist, list options or create new.
+  while [[ ! -d "$tickets_path/$ticket_category/$ticket_name" ]]; do
+    echo "The ticket '${ticket_name}' does not exist in '${ticket_category}'"
+    echo "Choose a ticket or create new [name/'new']: "
+    read -p "[name/'new']: " new_ticket_name
+    if [[ "$new_ticket_name" == "new" ]]; then
+      break
+    fi
+    ticket_name="$new_ticket_name"
   done
 
   # Build the new ticket path.

@@ -56,6 +56,8 @@ notepack()
   # If either of those are empty, likely because of last '/', exit.
   if [[ -z "$ticket_category" || -z "$ticket_name" ]]; then
     echo "Invalid input, try again."
+    echo "\tCategory: ${ticket_category}"
+    echo "\tTicket:   ${ticket_name}"
     cat "$docs_path/help.txt"
     exit 0
   fi
@@ -81,13 +83,12 @@ notepack()
   if [[ -e "$current_ticket_path" ]]; then
     echo "The ticket already exists in the category '${ticket_category}'"
     echo "It exists in '${current_ticket_path}'"
-    echo "Open it to edit? [Y/n]: "
-    read -r user_input
+    read -p "Open it to edit? [Y/n]: " user_input
     if [[ "$user_input" == "n" ]]; then
       exit 0
     fi
 
-    echo "Create a new testflow for ${ticket_name}? [y/N]"
+    read -p "Create a new testflow for ${ticket_name}? [y/N]: " user_input
     if [[ "$user_input" == "y" ]]; then
       new_testflow $config_path $current_ticket_path
     fi

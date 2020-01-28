@@ -1,0 +1,26 @@
+#!usr/bin/env bash
+
+# Utilities
+# Functions designed to be scalable and reusable. Mostly for file and string
+# validations.
+#
+
+# Confirm Create
+# Checks if a given directory exists within a given parent directory. If not,
+# ask to choose an existing one or create new, then return the name of the
+# directory.
+# @param  {string}  Parent Directory
+# @return {string}  Child Directory
+#
+confirm_create()
+{
+  local parent_directory=$1
+  local child_directory=$1
+
+  while [[ ! -d "$parent_directory/$child_directory" ]]; do
+    echo "'${child_directory} does NOT exist in '${parent_directory}'"
+    echo "Choose existing? [y/N]: "
+
+    echo "Create new? [Y/n]: "
+  done
+}

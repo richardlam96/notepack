@@ -8,6 +8,7 @@
 # @source testflow
 # @source feature
 #
+source $(dirname $0)/src/utilities
 source $(dirname $0)/src/ticket
 source $(dirname $0)/src/description
 source $(dirname $0)/src/testflow
@@ -51,13 +52,13 @@ notepack()
   # Get the last and second to last parts of the directory for ticket name and
   # category, respectively.
   local ticket_category=$(echo "$current_ticket_path" | cut -d'/' -f2)
-  local ticket_name=$(echo "$current_ticket_path" | rev | cut -d'/' -f1 | rev)
+  local ticket_name=$(echo "$current_ticket_path" | rev | cut -d'/' -f2 | rev)
 
   # If either of those are empty, likely because of last '/', exit.
   if [[ -z "$ticket_category" || -z "$ticket_name" ]]; then
     echo "Invalid input, try again."
-    echo "\tCategory: ${ticket_category}"
-    echo "\tTicket:   ${ticket_name}"
+    echo "Category: ${ticket_category}"
+    echo "Ticket:   ${ticket_name}"
     cat "$docs_path/help.txt"
     exit 0
   fi

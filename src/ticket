@@ -25,6 +25,7 @@ new_ticket()
   new_description $config_path $ticket_path
   new_testflow $config_path $ticket_path
   new_testing_story $config_path $ticket_path
+  new_test_summary $config_path $ticket_path
 
   # Conclude operations and open the notepack in vim.
   echo -e "\e[96mDone!"

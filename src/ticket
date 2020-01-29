@@ -46,7 +46,8 @@ edit_ticket()
                           | head -n 1)
   exec vim -p "$ticket_path"/description.md \
               "$ticket_path"/testflows/$newest_testflow \
-              "$ticket_path"/testing_story.md
+              "$ticket_path"/testing_story.md \
+              "$ticket_path"/test_summary.md
 }
 
 
